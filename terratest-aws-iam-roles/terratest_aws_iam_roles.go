@@ -30,6 +30,16 @@ var Config struct {
 }
 
 var nukeAccountID string
+
+const dotEnvHelpText = `Create a .env file in the current directory to define AWS_NUKE_ACCOUNT_ID
+
+Example:
+
+AWS_NUKE_ACCOUNT_ID=<YOUR TERRATEST AWS ACCOUNT ID HERE>
+
+`
+
+// Global io.MultiWriter logging
 var (
 	//buf    bytes.Buffer
 	// log.New(&buf, ... )
@@ -56,14 +66,6 @@ func init() {
 	flag.Parse()
 
 	if len(flag.Args()) != 1 {
-//		var (
-//			p uintptr
-//			filename string
-//			lineno int
-//			ok bool
-//		)
-//		p, filename, lineno, ok := runtime.Caller(0)
-//		fmt.Println(p, filename, lineno, ok)
 		path, err := os.Executable()
 		if err != nil {
 			panic(err)
@@ -75,8 +77,6 @@ func init() {
 }
 
 func main() {
-	err := godotenv.Load()
-
 	// if we aren't in Silent mode, lets add Stdout to our writers
 	if !Config.Silent {
 		writers = append(writers, os.Stdout)
@@ -92,11 +92,15 @@ func main() {
 		defer file.Close()
 	}
 
+	// Load .env file
+	err := godotenv.Load()
 	if err != nil {
+		info(dotEnvHelpText)
 		logger.Fatal("Error loading .env file")
 	} else {
 		info("Loaded .env file")
 	}
+
 	nukeAccountID = os.Getenv("AWS_NUKE_ACCOUNT_ID")
 	infof("AWS_NUKE_ACCOUNT_ID = %s", nukeAccountID)
 
