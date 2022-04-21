@@ -31,7 +31,15 @@ var Config struct {
 
 var nukeAccountID string
 
-const dotEnvHelpText = `Create a .env file in the current directory to define AWS_NUKE_ACCOUNT_ID
+const dotEnvHelpText = `A value for AWS_NUKE_ACCOUNT_ID is required!
+
+Either:
+
+1) Define the environment variable AWS_NUKE_ACCOUNT_ID
+
+OR
+
+2) Create a .env file in the current directory that defines AWS_NUKE_ACCOUNT_ID
 
 Example:
 
@@ -94,11 +102,14 @@ func main() {
 
 	// Load .env file
 	err := godotenv.Load()
-	if err != nil {
+	nukeAccountID = os.Getenv("AWS_NUKE_ACCOUNT_ID")
+	if err != nil && nukeAccountID == "" {
 		info(dotEnvHelpText)
 		logger.Fatal("Error loading .env file")
-	} else {
+	} else if err == nil {
 		info("Loaded .env file")
+	} else if nukeAccountID != "" {
+		info("Loaded AWS_NUKE_ACCOUNT_ID from environment")
 	}
 
 	nukeAccountID = os.Getenv("AWS_NUKE_ACCOUNT_ID")
