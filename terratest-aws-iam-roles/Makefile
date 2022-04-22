@@ -14,13 +14,20 @@ include $(build_aux)/main.mk
 
 .PHONY: debug-mk build run clean
 
-debug-mk: ## Debug Makefile variables
+debug-mk:: ## Debug Makefile variables
 	@echo mkfile_path=$(mkfile_path)
 	@echo project_dir=$(project_dir)
 	@echo top_builddir=$(top_builddir)
 	@echo build_aux=$(build_aux)
 	@echo BINARY_NAME=$(BINARY_NAME)
 	@echo SOURCE_FILES=$(SOURCE_FILES)
+	@echo PLATFORMS=$(PLATFORMS)
+	@echo OS_LIST=$(OS_LIST)
+	@echo PLATFORM_BINARY_NAMES=$(PLATFORM_BINARY_NAMES)
+	@echo -------------------------------
+	@echo OS_TEMPLATE_rendered=$(OS_TEMPLATE_rendered)
+	@echo -------------------------------
+	@echo OS_PLATFORM_TEMPLATE_rendered=$(OS_PLATFORM_TEMPLATE_rendered)
 
 
 $(BINARY_NAME)-%: build
