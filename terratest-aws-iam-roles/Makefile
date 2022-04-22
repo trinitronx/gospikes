@@ -45,7 +45,7 @@ build: ## Create cross-platform builds
 
 run: $(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) ## no-help
 run: ## Run the built binary
-	./${BINARY_NAME}
+	./$(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) '/aws-reserved/sso.amazonaws.com/'
 
 clean: ## Clean all generated files
 	go clean
