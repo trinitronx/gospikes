@@ -12,4 +12,8 @@ else
   $(shell git submodule update --init .uncommon-build >&2 )
 endif
 
+stylish: ## no-help
+	@[ -d .uncommon-build ] && echo '\033[47m🤵‍♂️\033[0m \033[1;92m.uncommon-build is now installed!\033[0m' \
+		|| echo '\033[41m🤦\033[0m \033[1;91m .uncommon-build installation had issues!\033[0m'
+
 include .uncommon-build/main.mk
