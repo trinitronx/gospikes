@@ -48,7 +48,7 @@ run: $(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) ## no-help
 run: ## Run the built binary
 	./$(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) '/aws-reserved/sso.amazonaws.com/'
 
-clean: ## Clean all generated files
+clean:: ## Clean all generated files
 	go clean
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_NAME)-darwin-*
