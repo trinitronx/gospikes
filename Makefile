@@ -2,6 +2,7 @@
 SOURCE_FILES := $(wildcard src/*.go)
 PLATFORMS ?= amd64 arm64 ppc64le riscv64
 OS_LIST ?= darwin linux windows
+PROJECT_LANG := go
 
 #mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 #project_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
