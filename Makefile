@@ -34,6 +34,7 @@ debug-mk:: ## Debug Makefile variables
 $(BINARY_NAME)-%: build
 build: $(SOURCE_FILES) ## no-help
 
+.PHONY: xplatform
 xplatform: $(PLATFORMS) ## Build cross-platform binaries
 #$(PLATFORMS): $(SOURCE_FILES)
 #	GOARCH=$@ GOOS=darwin go build -o $(BINARY_NAME)-darwin.$@

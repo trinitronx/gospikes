@@ -57,7 +57,7 @@ var (
 
 	multiWriter = io.MultiWriter(writers...)
 	logger = log.New(os.Stdout, "logger: ", log.Ldate | log.Ltime | log.Lmicroseconds | log.Lshortfile)
-	
+
 	infof = func(format string, info string) {
 		logger.Output(2, fmt.Sprintf(format, info))
 	}
