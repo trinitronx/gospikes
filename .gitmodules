@@ -1,0 +1,3 @@
+[submodule ".uncommon-build"]
+	path = .uncommon-build
+	url = https://github.com/LyraPhase/uncommon-build.git
