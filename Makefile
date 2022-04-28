@@ -1,16 +1,17 @@
-BINARY_NAME=$(shell grep module go.mod | sed -e 's/module \(.*\)\/\(.*\)$$/\2/')
+#BINARY_NAME=$(shell grep module go.mod | sed -e 's/module \(.*\)\/\(.*\)$$/\2/')
 SOURCE_FILES := $(wildcard src/*.go)
 PLATFORMS ?= amd64 arm64 ppc64le riscv64
 OS_LIST ?= darwin linux windows
 
-mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-project_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
-top_builddir := $(basename $(patsubst %/,%,$(dir $(mkfile_path))))
-src_dir := $(top_builddir)/src
+#mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+#project_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+#top_builddir := $(basename $(patsubst %/,%,$(dir $(mkfile_path))))
+#src_dir := $(top_builddir)/src
 
 
-build_aux := $(top_builddir)/build-aux
-include $(build_aux)/main.mk
+#build_aux := $(top_builddir)/build-aux
+#include $(build_aux)/main.mk
+include .uncommon-build-init.mk
 
 .PHONY: debug-mk build run clean
 
@@ -47,7 +48,7 @@ run: $(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) ## no-help
 run: ## Run the built binary
 	./$(BINARY_NAME)-$(PLATFORM)-$(TARGET_ARCH) '/aws-reserved/sso.amazonaws.com/'
 
-clean: ## Clean all generated files
+clean:: ## Clean all generated files
 	go clean
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_NAME)-darwin-*
