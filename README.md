@@ -1,7 +1,7 @@
-terratest-aws-spikes
-====================
+gospikes
+========
 
-This repository is a [development spike][1] for Terratest + GoLang tinkering.
+This repository is a [development spike][1] for Terratest and/or GoLang tinkering.
 
 I'm just testing things out here.
 
