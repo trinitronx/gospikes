@@ -1,4 +1,4 @@
-package main
+package terratest_aws_iam_roles
 
 import (
 	//"encoding/json"

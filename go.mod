@@ -1,4 +1,4 @@
-module github.com/trinitronx/terratest-aws-iam-roles
+module github.com/trinitronx/terratest-aws-spikes
 
 go 1.15
 
