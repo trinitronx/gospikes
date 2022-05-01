@@ -1,5 +1,5 @@
-terratest-aws-iam-roles
-=======================
+terratest-aws-spikes
+====================
 
 This repository is a [development spike][1] for Terratest + GoLang tinkering.
 

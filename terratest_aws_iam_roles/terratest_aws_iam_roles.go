@@ -1,4 +1,4 @@
-package main
+package terratest_aws_iam_roles
 
 import (
 	//"encoding/json"
@@ -21,6 +21,7 @@ import (
 	//"github.com/stretchr/testify/assert"
 )
 
+// Config A struct to hold settings
 // Let's implement 2 more features of curl;  One is to send the output to a file,
 // And the other is to squelch printing to Stdout.  Unlike curl, we'll make these
 // independent;  we'll always output to Stdout unless silent is true.
