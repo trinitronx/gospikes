@@ -1,3 +1,3 @@
-module github.com/trinitronx/terratest-aws-spikes
+module github.com/trinitronx/gospikes
 
 go 1.15
